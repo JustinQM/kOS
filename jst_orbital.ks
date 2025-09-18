@@ -69,7 +69,7 @@ function pitch_floor_from_q
     if g_cap > 1.0 { set g_cap to 1.0. }.
 
     //sanity check: if still in the first 10% of the atmosphere, disregard q
-    if ship:body:atm:height = 0 or ship:altitude / ship:body:atm:height < 0.10
+    if ship:body:atm:exists and ship:altitude / ship:body:atm:height < 0.10
     {
         set g_q to 0.
     }
@@ -82,7 +82,7 @@ function pitch_floor_from_q
 
     print "rho_now: " + ROUND(rho_now,3) AT(0,25). 
     print "rho_sl: " + ROUND(rho_sl,3) AT(0,26). 
-	if ship:body:atm:height > 0
+	if ship:body:atm:exists
 	{
     	print "percent through atmosphere: " + ROUND(ship:altitude / ship:body:atm:height, 3) + "%" AT(0,27). 
 
