@@ -82,7 +82,11 @@ function pitch_floor_from_q
 
     print "rho_now: " + ROUND(rho_now,3) AT(0,25). 
     print "rho_sl: " + ROUND(rho_sl,3) AT(0,26). 
-    print "percent through atmosphere: " + ROUND(ship:altitude / ship:body:atm:height, 3) + "%" AT(0,27). 
+	if ship:body:atm:exists
+	{
+    	print "percent through atmosphere: " + ROUND(ship:altitude / ship:body:atm:height, 3) + "%" AT(0,27). 
+
+	}
     print "Q: " + ROUND(g_q,3) AT(0,28). 
     print "ATM: " + ROUND(g_cap,3) AT(0,29).
     print "CHOSEN: " + ROUND(g,3) AT(0,30).
@@ -599,6 +603,7 @@ function generic_launch
 
     } 
 
+	unlock steering .
     wait 0 .
     print "launch to " + target_apoapsis + " complete!" .
     return .
